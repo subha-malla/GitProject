@@ -1,0 +1,19 @@
+https://github.com/
+
+http://localhost/erp-api/
+  cemk04@gmail.com
+  12345
+  gigepo5305@goonby.com
+   Abc@123
+  vecet48113@kuruapp.com
+  12345
+  becki@nutraconnection.com
+  12345
+
+https://test.asterdocs.com/login
+
+https://development.asterdocs.com/
+   developer@greenjeeva.com
+   12345
+https://www.greenjeeva.com/ =>Front-site live
+http://localhost/greenjeeva-frontsite/ => Front-site local
