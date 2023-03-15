@@ -1,0 +1,102 @@
+auth -> resetLinkVerification
+general -> get_CompanyLogo
+company -> get_user_groups
+       company -> search_product 
+supplier -> search_company
+general -> get_selected_column_value
+general -> get_many_records
+
+========================================
+
+Supplier
+========
+   get_item_level_documents
+   get_facility_level_documents
+   get_company_level_documents
+   customer_all_information_contacts
+   customer_information_product
+   customer_information_location
+   fetch_supplier_products
+   fetch_item_comments
+   fetch_location_comments
+   fetch_documents_comments
+fetch_suppliers
+   searchCompany
+
+Footer
+======
+   user_update_profile_pic
+   update_preferences
+
+Customer
+=========
+   fetch_item_approve_documents
+   fetch_facility_approve_documents
+   fetch_company_approve_documents
+   customer_published_product
+   customer_published_location
+   fetch_item_list_view
+   fetch_location_list_view
+   fetch_company_list_view
+   fetch_item_documents
+   fetch_facility_documents
+   fetch_company_documents
+   get_company_level_connection_status
+   fetch_item_comments
+   fetch_location_comments
+fetch_doc_upload_activity
+fetch_product_connection_activity
+fetch_location_connection_activity
+fetch_customer_connection_activity
+   fetch_documents_comments
+   fetch_suppliers_details
+   customer_information_location
+   customer_information_product
+   fetch_customers
+
+Company
+=======
+add_user
+fetch_item_doc
+fetch_location_doc
+fetch_company_doc
+fetch_document_type
+fetch_location_doctype
+product_certificate
+get_location_certificate
+get_company_certificate
+fetch_company_doctype
+fetch_product
+fetch_location
+fetch_user
+
+Auth
+=====
+login
+
+Authentication
+===============
+reset_password
+
+Admin_lib
+==========
+fetch_company_details
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

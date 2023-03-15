@@ -1,0 +1,14 @@
+SELECT `usr_grp`.`user_group`,
+ `usr_grp`.`status`, `usr_to_grp`.`expiry_date` as `group_exp`, `app_svc`.`app_svc`, `usr_grp_prfl`.`expiry_date` as `profile_exp`, `svc_obj`.`object_name`,`svc_obj`.`controller`,
+`obj_type`.`object_type`, `acs_mod`.`access_mode`, `acs_mod`
+.`access_mode_code`, `acs_ctrl`.`expiry_date` as `ctrl_exp`
+FROM `astr_user_to_group` as `usr_to_grp` LEFT JOIN `astr_usr_grp` as `usr_grp` ON `usr_grp`.`id`=`usr_to_grp`.`user_group` LEFT JOIN `astr_usr_grp_profile` as `usr_grp_prfl` ON `usr_grp_prfl`.`user_group`=`usr_to_grp`.`user_group` LEFT JOIN `astr_app_svc` as `app_svc`
+ON `app_svc`.`id`=`usr_grp_prfl`.`app_svc_id` LEFT JOIN `astr_app_svc_object` as `svc_obj`
+ ON `svc_obj`.`app_svc_id`=`usr_grp_prfl`.`app_svc_id` LEFT
+JOIN `astr_object_type` as `obj_type` ON `obj_type`.`id`=`svc_obj`.`object_type` LEFT JOIN
+ `astr_user_grp_acs_ctl` as `acs_ctrl` ON `acs_ctrl`.`grp_profile_id`=`usr_grp_prfl`.`id`
+LEFT JOIN `astr_access_mode` as `acs_mod` ON `acs_mod`.`id`=`acs_ctrl`.`access_mode` WHERE
+ `usr_to_grp`.`user_id` = 'undefined' AND `usr_grp`.`product_code` = 'ASTER' AND `svc_obj`
+.`controller` = 'company' AND`usr_to_grp`.`expiry_date` > '
+2023-03-03' AND `usr_grp_prfl`.`expiry_date` > '2023-03-03'
+AND `acs_ctrl`.`expiry_date` > '2023-03-03' AND `svc_obj`.`object_name`='get_user_groups'
