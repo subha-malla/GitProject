@@ -1,0 +1,3086 @@
+<?php init_head(); ?>
+<!--<div class="overlay"></div>-->
+
+<!-- Page Body start-->
+<div class="page-body">
+	<div class="container-fluid">
+		<div class="page-header pb-2">
+			<div class="row">
+				<div class="col-sm-6">
+					<h3><?php echo _l('supplier_questionnaire') ?></h3>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo _l('home') ?></a>
+						</li>
+						<li class="breadcrumb-item"><?php echo _l('company') ?></li>
+						<li class="breadcrumb-item active"><?php echo _l('supplier_questionnaire') ?></li>
+					</ol>
+				</div>
+				<div class="col-sm-6">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container-fluid starts-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tab-content" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="edit-profile" role="tabpanel"
+						 aria-labelledby="edit-profile-tab">
+						<div class="edit-profile">
+							<div class="row d-flex">
+								<div class="card">
+									<div class="card-body">
+										<form action="" method="post" onsubmit="" id="update-allergen-certificate">
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="organization_name"
+														   type="text"><?php echo _l('supplier') ?></label>
+												</div>
+												<input type="hidden" id="certificate_type_id"  name="certificate_type_id" value="">
+												<input type="hidden" id="id"  name="id" value="">
+												<input type="hidden" id="created_by"  name="created_by" value="">
+												<input type="hidden" id="modify_by"  name="modify_by" value="">
+												<div class="col-md-4">
+													<input class="form-control" id="company_name" disabled value="">
+													<input type="hidden" id="company_id"  name="company_id" value="">
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="location"
+														   type="text"><?php echo _l('location') ?></label>
+												</div>
+												<div class="col-md-4">
+													<input class="form-control" id="location_name" disabled  value="">
+													<input type="hidden" id="location_id"  name="location_id" value="">
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="locationaddress"
+														   type="text"><?php echo _l('location_address') ?></label>
+												</div>
+												<div class="col-md-4">
+													<input class="form-control" id="l_address" disabled  value="">
+													<input type="hidden" id="l_id" name="l_id" value="">
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="sitem_name"
+														   type="text"><?php echo _l('supplier_item_id') ?></label>
+												</div>
+												<div class="col-md-4">
+													<input class="form-control" id="sitem_name" disabled  value="">
+													<input type="hidden" id="sitem_id" name="sitem_id" value="">
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="effective_date"
+														   type="text"><?php echo _l('effective_date') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input class="datepicker-here form-control digits" id="effective_date" name="effective_date" value="<?php if(isset($effective_date)){echo $effective_date;}?>"  required>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="exp_date"
+														   type="text"><?php echo _l('expiration_date') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input class="datepicker-here form-control digits" id="expiary_date" name="expiary_date" disabled value="<?php if(isset($expiary_date)){echo $expiary_date;}?>" required>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<label class="p-2" for="exp_date"
+														   type="text" style="color: #842029">Please answer the questions below for the ingredient/item populated on this document. Add comments where additional information is necessary. Required fields indicated with a red asterisk.</label>
+												</div>
+											</div>
+
+											<label class="bg-primary d-block p-2" type="text"><?php echo _l('General Programs') ?></label><br>
+											<label class="bg-success" type="text"><?php echo _l('Facility Compliance') ?></label><br>
+											<label class="" type="text"><?php echo _l('Select all that apply:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<input type="checkbox" id="food">
+													<label for="declaration_statement" id="food_label"><?php echo _l('Food (U.S. 21 CFR Part 117)') ?></label><br>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<input type="checkbox" id="cgmp">
+													<label for="declaration_statement" id="cgmp_label"><?php echo _l('Dietary Supplements (CGMP) rule (U.S. 21 CFR Part 111)') ?></label><br>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<input type="checkbox" id="drug">
+													<label for="declaration_statement" id="drug_label"><?php echo _l('Drug (U.S. 21 CFR Parts 210 and 211)') ?></label><br>
+												</div>
+											</div>
+                                        <br>
+<!--											FSMA-->
+											<label class="bg-success" type="text"><?php echo _l('FSMA') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Is your facility registered with FDA (as required by Bioterrorism Act of 2002)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fda_drpdn" id="fda_parent" name="is_fda" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex d-none mb-12 block_fda_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Provide your FDA Registration number:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tfda_child" id="fda_reg_no" name="fda_reg_no" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex d-none mb-12 block_fda_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Is your facility required to comply with FDA FSMA Regulations?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control tfda_child" id="fda_parent" name="is_fsma">
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex d-none mb-12 block_fda_no">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('If exempt from FDA FSMA regulations, specify why:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tfda_child" id="tfda_child" name="expmt_fda_fsma_reg" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Is your facility subject to the FSMA Preventive Controls for Human Food Rule?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control hfr_drpdn" id="hfr_parent" name="is_hfr" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex d-none mb-12 block_hfr_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Will your facility (or does it now) have a fully developed and implemented FSMA Food Safety Plan?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control hfr_drpdn" id="hfr_parent" name="is_fsma_fsp" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12  d-none block_hfr_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your facility have a trained Preventive Controls Qualified Individual?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control is_tpcqi" id="is_tpcqi" name="is_tpcqi" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex d-none mb-12 block_tpcqi_child">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('List the PCQI in charge of the Food Safety Plan:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control thfr_child" id="tfda_child" name="fda_reg_no" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility import ingredients?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fimport_drpdn" id="fimport_parent" name="is_fimport" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_fimport_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l(' List countries:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tlist_child" id="list_country" name="list_country" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_fimport_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Have you verified the foreign supplier is meeting the requirements of the FSMA Final Rule on Supplier Verification Programs (FSVP) for Importers of Food for Humans and Animals and Preventive Controls for Human Food?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fsvp_drpdn" id="fsvp_parent" name="is_fsvp" required>
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<label class="fsvp_level d-none" type="text" id="fsvp_level"><?php echo _l('Confirm which FSVP verification activities are completed:') ?></label><br>
+
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Certificate of Analysis (COA)') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control coa_drpdn" id="coa" name="coa" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('On Site Audits') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control site_audit_drpdn" id="site_audits" name="site_audits" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+										
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Review of a 3rd party audit? (performed by a qualified individual)') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control 3rd_drpdn" id="3rd_party" name="3rd_party" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Documentation Review') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control doc_drpdn" id="doc_review" name="doc_review" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Review of FDA import alerts') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fda_import_drpdn" id="fda_import" name="is_fda_import" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsvp_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Other') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tother_child" id="tother_child" name="tother_child" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_additional_no">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Please add any additional comments here:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tcomments_child" id="tcomments_child" name="tcomments_child" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<!--											GFSI-->
+											<label class="bg-success" type="text"><?php echo _l('GFSI') ?></label><br>
+											<div class="row d-flex mb-12 block_gfsi_recognized">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Is your facility currently certified to a GFSI-recognized certification program?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control gfsi_rec_drpdn" id="gfsi_rec_parent" name="is_gfsi_rec" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_child_gfsi_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Which certified program?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control cert_drpdn" id="cert_parent" name="is_cert" required>
+														<?php
+														echo gfsi_certification_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_child_gfsi_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('What year was certification first achieved?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tfirst_child" id="tfirst_child" name="is_first" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_child_gfsi_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Expiration Date of Certification:') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control texp_child" id="texp_child" name="is_exp" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have a documented calibration program for equipment in plant and laboratory (scales, thermometers, thermograph, etc)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dcp_drpdn" id="dcp_parent" name="is_dcp" required>
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Non-GFSI-->
+											<label class="bg-success" type="text"><?php echo _l('Non-GFSI') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('If your facility is NOT GFSI-certified, do you have an annual Third Party GMP Audit?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control gmp_audit_drpdn" id="gmp_audit_parent" name="is_gmp_audit" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="cfp_level"><?php echo _l('Confirm the following programs are in place:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Written specifications and test plan for all ingredients and packaging materials?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pm_drpdn" id="pm_parent" name="pm_audit" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Receiving?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control receiving_drpdn" id="receiving_parent" name="is_receiving" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Incident Investigation?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control incident_drpdn" id="incident_parent" name="is_incident" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Incident Corrective Action?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control caction_drpdn" id="caction_parent" name="is_caction" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Customer Complaints?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control customer_complaints_drpdn" id="customer_complaints_parent" name="is_customer_complaints" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Sanitation (Cleaning Program, Master Sanitation Schedule)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control sanitation_drpdn" id="sanitation_parent" name="is_sanitation" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('How often do you complete a full clean of your line(s)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tfclean_child" id="tfclean_child" name="is_fclean" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have a water analysis program and Standard Operating Procedure (SOP) for sampling?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control sop_drpdn" id="sop_parent" name="is_sop" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does the water used to grow, produce or manufacture this product meet EPA guidelines for radionuclides?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control epa_drpdn" id="epa_parent" name="is_epa" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are you testing the water for radionuclides to verify that the water used meets EPA guidelines for radionuclides?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control meet_epa_drpdn" id="meet_epa_parent" name="is_meet_epa" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="non_gfsi_level"><?php echo _l('If your facility is NOT GFSI-certified, indicate the existence of the following programs:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Pest Control (Rodents, Birds, Insects)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pest_control_drpdn" id="pest_control_parent" name="is_pest_control" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Maintenance (Facility, Processing, and Packaging)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control maintenance_drpdn" id="maintenance_parent" name="is_maintenance" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Chemical approval program including appropriate Safety Data Sheet (SDS) documentation?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control sds_drpdn" id="sds_parent" name="is_sds" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Segregated storage for food grade vs. non-food grade chemicals?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control segregated_drpdn" id="segregated_parent" name="is_segregated" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Written glass, hard plastic, and wood policy within the facility?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wfacility_drpdn" id="wfacility_parent" name="is_wfacility" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Certificate of Analysis Review for each material received?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control rcoa_drpdn" id="rcoa_parent" name="is_rcoa" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Evaluation of incoming raw materials for compliance to specifications?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control sevaluation_drpdn" id="sevaluation_parent" name="is_sevaluation" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Documented program for the identification and isolation of raw materials and/or finished product that are not in compliance with specifications?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control not_compliance_drpdn" id="not_compliance_parent" name="is_not_compliance" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Employee training?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control emp_training_drpdn" id="emp_training_parent" name="is_emp_training" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Documented allergen plan?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dap_drpdn" id="dap_parent" name="is_dap" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l(' Environmental Monitoring Program (EMP)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control emp_drpdn" id="emp_parent" name="is_emp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have a documented calibration program for equipment in plant and laboratory (scales, thermometers, thermograph, etc)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control documented_calibration_program_drpdn" id="documented_calibration_program_parent" name="is_documented_calibration_program" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Foreign Material controls (metal detector, sieves, optical, etc.) cover every line and every product before shipped?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fmc_drpdn" id="fmc_parent" name="is_fmc" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('List Foreign Material controls used:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tlfmcu_child" id="tlfmcu_child" name="is_lfmcu" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<!--										Other Manufacturing Standards-->
+											<label class="bg-success" type="text"><?php echo _l('Other Manufacturing Standards') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are you registered with the CFIA?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control cfsi_drpdn" id="cfsi_parent" name="is_cfsi" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility follow any other manufacturing standard?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control faoms_drpdn" id="faoms_parent" name="is_faoms" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_omstandards_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Please specify') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tspecify_child" id="tspecify_child" name="is_specify" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Is your facility currently certified to any other manufacturing standards?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control coms_drpdn" id="coms_parent" name="is_coms" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_coms_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Please specify') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tpspecify_child" id="tpspecify_child" name="is_pspecify" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<label class="" type="text" id="confacility_level"><?php echo _l('Confirm your facility has a written crisis management strategy for the following:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Disaster preparedness?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dp_drpdn" id="dp_parent" name="is_dp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Emergency response?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control er_drpdn" id="er_parent" name="is_er" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Recovery plan?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control rp_drpdn" id="rp_parent" name="is_rp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Business continuity plan?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control bcp_drpdn" id="bcp_parent" name="is_bcp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--										Social Responsibility-->
+											<label class="bg-success" type="text"><?php echo _l('Social Responsibility') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility comply with existing local and federal laws regarding slavery and human trafficking?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control ht_drpdn" id="ht_parent" name="is_ht" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility have a social, ethical and environmental responsibility program in place?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control rpp_drpdn" id="rpp_parent" name="is_rpp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="listac_level"><?php echo _l('List applicable certifications for these programs below:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Diversity and Inclusion:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tdi_child" id="tdi_child" name="is_di" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Ethics:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tethics_child" id="tethics_child" name="is_ethics" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Environmental responsibility:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tenvres_child" id="tenvres_child" name="is_envres" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l(' Sustainability:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tsustain_child" id="tsustain_child" name="is_sustain" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Other:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tothers_child" id="tothers_child" name="is_other" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility have a work-place safety program in place?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wpsp_drpdn" id="wpsp_parent" name="is_wpsp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Please add any additional comments here:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control taddtional_child" id="taddtional_child" name="is_addtional" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<!--										Supplier Diversity and Inclusion-->
+											<label class="bg-success" type="text"><?php echo _l('Supplier Diversity and Inclusion') ?></label><br>
+											<label class="" type="text" id="astercm_level"><?php echo _l('Diversity and inclusion are core values of ASTER’ s corporate mission. Our goal is to help our customers proactively identify, build relationships with, and purchase goods and services from minority-owned and woman-owned businesses in association with corporate goals.') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are you a minority-owned business?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control mowned_drpdn" id="mowned_parent" name="is_mowned" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are you a woman-owned business?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wowned_drpdn" id="wowned_parent" name="is_wowned" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--										Animal Welfare-->
+											<label class="bg-success" type="text"><?php echo _l('Animal Welfare') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility handle live animals?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fhla_drpdn" id="fhla_parent" name="is_fhla" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_aw_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your facility have a written Animal Welfare Program?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wawp_drpdn" id="wawp_parent" name="is_wawp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_aw_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your facility have annual third-party Animal Welfare audits?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control thirdparty_drpdn" id="thirdparty_parent" name="is_thirdparty" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_aw_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your facility have any animal welfare certifications?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wcertifications_drpdn" id="wcertifications_parent" name="is_wcertifications" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8 ">
+													<label class="p-2"
+														   type="text"><?php echo _l('Please add any additional comments here:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control add_addtional_child" id="add_addtional_child" name="is_add_addtional" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<!--										Facility and Equipment-->
+											<label class="bg-success" type="text"><?php echo _l('Facility and Equipment') ?></label><br>
+											<label class="" type="text" id="confirm_level"><?php echo _l('Confirm the following are in place:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('24-hour emergency contact(s) (i.e. cell phone & NOT general customer service)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control emergency_drpdn" id="emergency_parent" name="is_emergency" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_list_emergency_child ">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Please list emergency contact(s) name(s) and phone number(s):') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control list_emergency_child" id="list_emergency_child" name="is_list_emergency" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Building security system and staff?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control building_drpdn" id="building_parent" name="is_building" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Manufacturing and storage facilities secure?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fsecure_drpdn" id="fsecure_parent" name="is_secure" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class=" d-none block_fsecure_child_yes" type="text" id="astercm_level"><?php echo _l('Please list emergency contact(s) name(s) and phone number(s):') ?></label><br>
+											<div class="row d-flex mb-12 d-none block_fsecure_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Well-lit from the outside??') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control well_list_drpdn" id="well_list_parent" name="is_well_list" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsecure_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Perimeter fence?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pf_drpdn" id="pf_parent" name="is_pf" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_fsecure_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Security cameras?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control scameras_drpdn" id="scameras_parent" name="is_scameras" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_fsecure_child_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Authorized access gates?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control acg_drpdn" id="acg_parent" name="is_acg" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Automatic fire sprinklers?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control afs_drpdn" id="afs_parent" name="is_afs" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Fire alarm system?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fas_drpdn" id="fas_parent" name="is_fas" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_fas_yes">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Is it monitored by a central station?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fas_drpdn" id="fas_parent" name="is_fas" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="bg-primary d-block p-2" type="text"><?php echo _l('Quality and Food Safety Programs') ?></label><br>
+											<!--											Food Safety Culture-->
+											<label class="bg-success" type="text"><?php echo _l('Food Safety Culture') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have a clearly communicated food safety and security policy that states the company’s intention to meet obligations to produce and/or store safe and legal products?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control policy_drpdn" id="policy_parent" name="is_policy" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are leadership and employees aware of the food safety policy?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control aware_drpdn" id="aware_parent" name="is_aware" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Are food safety performance metrics (e.g. environmental analysis, microbiological analysis, pathogen testing, customer complaints) in place and reviewed with appropriate staff at a predetermined frequency?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fpm_drpdn" id="fpm_parent" name="is_fpm" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility have dedicated food safety / quality manager(s)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dedicated_drpdn" id="dedicated_parent" name="is_dedicated" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility have a risk management team?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control rmt_drpdn" id="rmt_parent" name="is_rmt" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Does your facility have a food defense team?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fdt_drpdn" id="fdt_parent" name="is_fdt" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Food Safety Systems-->
+											<label class="bg-success" type="text"><?php echo _l('Food Safety Systems') ?></label><br>
+											<label class="" type="text" id="ffss_level"><?php echo _l('Confirm the following food safety systems are in place:') ?></label><br>
+											<label class="" type="text" id="bhpc_level"><?php echo _l('Biological hazard process controls:') ?></label><br>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Lethal Treatment (Heat, Irradiation, Ionizing, Fumigation, HPP)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control ltreatment_drpdn" id="ltreatment_parent" name="is_ltreatment" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Cooling Time/Temperature (Refrigeration, freezing, heat-exchanger)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control cooling_drpdn" id="cooling_parent" name="is_cooling" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Time/Temperature (Refrigeration, Freezing)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control tt_drpdn" id="tt_parent" name="is_tt" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Formulation (Water activity, Acidity/Acidification, Adding Preservatives)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control formulation_drpdn" id="formulation_parent" name="is_formulation" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Dehydration/Drying (Air Drying, Freeze Drying, Spray Drying)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dehydration_drpdn" id="dehydration_parent" name="is_dehydration" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Other:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control totherfss" id="otherfss_child" name="is_otherfss" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<label class="" type="text" id="chpc_level"><?php echo _l('Chemical hazard process controls:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Recipe Management (Food or Color Additive, or GRAS Substance in excess of a maximum use level)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control rm_drpdn" id="rm_parent" name="is_recipem" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Storage Conditions (Mycotoxin Prevention)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control storage_condition_drpdn" id="storage_condition_parent" name="is_storage_condition">
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Physical Sorting (Mycotoxin Prevention)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control ps_drpdn" id="ps_parent" name="is_ps" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="phpc_level"><?php echo _l('Physical hazard process controls:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have validated sanitation controls to address cleaning of food-contact surfaces?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control validatedsc_drpdn" id="validatedsc_parent" name="is_validatedsc" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('  Physical Separation (Magnets, sieves, screens, or floatation tanks)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control physicals_drpdn" id="physicals_parent" name="is_physicals" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Detection (Metal, X-Ray)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control detection_drpdn" id="detection_parent" name="is_detection" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_detection_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('State the Fe test size/detection limits.') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control fe_test" id="fe_test_child" name="is_fe_test" placeholder="<?php echo _l('Enter N/A if not applicable:'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_detection_yes ">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('State the Non-Fe test size/detection limits.') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tnonfe_test" id="nonfe_test_child" name="is_nonfe_test" placeholder="<?php echo _l('Enter N/A if not applicable:'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_detection_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('State the Non-mag SS test size/detection limits.') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tnon_mag" id="non_mag_child" name="is_non_mag" placeholder="<?php echo _l('Enter N/A if not applicable:'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Manual Sorting?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control manual_sorting_drpdn" id="manual_sorting_parent" name="is_manual_sorting" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Electronic Sorting (Camera, Laser, X-ray, IR)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control electronic_drpdn" id="electronic_parent" name="is_electronic" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Equipment Inspection?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control equipment_drpdn" id="equipment_parent" name="is_equipment" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Describe any other relevant preventive controls not previously mentioned:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tother_relevant_pc" id="other_relevant_pc_child" name="is_other_relevant_pc" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<label class="" type="text" id="scc_level"><?php echo _l('Do you have supply-chain controls to address the following potential hazards?') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Pesticides?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pesticides?_drpdn" id="pesticides?_parent" name="is_pesticides?" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Drug residues?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control drug_drpdn" id="drug_parent" name="is_drug" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Heavy Metals?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control heavym_drpdn" id="heavym_parent" name="is_heavym" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Mycotoxins?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control mycotoxins_drpdn" id="mycotoxins_parent" name="is_mycotoxins" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Supplier Approval-->
+											<label class="bg-success" type="text"><?php echo _l('Supplier Approval') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Do you have a documented supplier approval program?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control dsap_drpdn" id="dsap_parent" name="is_dsap_drpdn" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_dsap_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Do you have an approved suppliers list?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control asl_drpdn" id="asl_parent" name="is_asl" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_dsap_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your program include a supplier’s risk assessment?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control sra_drpdn" id="sra_parent" name="is_sra" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_dsap_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your program include an individual ingredient risk assessment?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control iira_drpdn" id="iira_parent" name="is_iira" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_sra_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your program include assessment of food security?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control iafs_drpdn" id="iafs_parent" name="is_iafs" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_sra_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your program include economic adulteration?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control iea_drpdn" id="iea_parent" name="is_iea" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_dsap_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your supplier approval program allow insight to every manufacturing facility providing ingredients?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control mfpi_drpdn" id="mfpi_parent" name="is_mfpi" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="sape_level"><?php echo _l('Does your supplier approval program encompass:') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8" >
+													<label class="p-2"
+														   type="text"><?php echo _l('Food contact packaging suppliers?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fcps_drpdn" id="fcps_parent" name="is_fcps" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Non-food contact packaging suppliers?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control nfcps_drpdn" id="nfcps_parent" name="is_nfcps" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Is it an automated system (e.g. Aster)?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control automatedsystem_drpdn" id="automatedsystem_parent" name="is_automatedsystem" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_automatedsystem_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Which automated system?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tautomated_system" id="automated_system" name="is_automated_system" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Approximately how many ingredient supplier facilities do you utilize?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control isf_drpdn" id="isf_parent" name="is_isf" >
+														<?php
+														echo ingredient_supplier_facilities_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Approximately how many food contact packaging supplier facilities do you utilize?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control approximately_drpdn" id="approximately_parent" name="is_approximately" >
+														<?php
+														echo ingredient_supplier_facilities_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('If you are a broker/distributor, approximately how many of your suppliers are not GFSI certified?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control notgfsi_drpdn" id="notgfsi_parent" name="is_notgfsi" >
+														<?php
+														echo ingredient_supplier_facilities_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="vac_level"><?php echo _l('What total percentage of non-GFSI certified supplier facilities are visited and audited by your company?') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do you collect 3rd-party audit information for all suppliers not audited by your company?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control collect_drpdn" id="collect_parent" name="is_collect" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do you evaluate and perform a risk assessment of your supplier’s facility documentation prior to the onset of purchases?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control evaluate_drpdn" id="evaluate_parent" name="is_evaluate" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do you evaluate and perform a risk assessment of your supplier’s ingredient documentation prior to the onset of purchases?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control idp_drpdn" id="idp_parent" name="is_idp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your company inspect your supplier’s facility prior to the onset of purchases?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control onset_drpdn" id="onset_parent" name="is_onset" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_onset_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Select % of the time the supplier’s facility is Inspected prior to purchase:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control prior_to_purchase_drpdn" id="prior_to_purchase_parent" name="is_prior_to_purchase" >
+														<?php
+														echo prior_to_purchase_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do your transport suppliers go through a documented approval process?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control suppliers_drpdn" id="suppliers_parent" name="is_suppliers" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do your external warehouses go through a documented approval process?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control external_drpdn" id="external_drpdn_parent" name="is_external_drpdn" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Incoming Materials-->
+											<label class="bg-success" type="text"><?php echo _l('Incoming Materials') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Are ingredients used on a First In – First Out (FIFO) basis?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control fifo_drpdn" id="fifo_parent" name="is_fifo" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_fifo_no">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Which system is used?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tsystem_used" id="system_used" name="is_system_used" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Are raw materials code dated?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control raw_drpdn" id="raw_parent" name="is_raw" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_raw_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Explain lot code:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tlot_code" id="lot_code" name="is_lot_code" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<!--											HACCP-->
+											<label class="bg-success" type="text"><?php echo _l('HACCP') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility operate under a validated HACCP program(s)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control hccp_drpdn" id="hccp_parent" name="is_hccp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_hccp_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Does your HACCP plan implement a critical control point for each product shipped?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control hccp_yes_drpdn" id="hccp_yes_parent" name="is_hccp_yes" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Allergens-->
+											<label class="bg-success" type="text"><?php echo _l('Allergens') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility perform an internal risk assessment on allergens?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pir_drpdn" id="pir_parent" name="is_pir" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do you have validated allergen change-over cleaning procedures?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control acocp_drpdn" id="acocp_parent" name="is_acopc" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--										Microbiological-->
+											<label class="bg-success" type="text"><?php echo _l('Microbiological') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Do all products shipped go through a validated microbiological kill step?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control kill_drpdn" id="kill_parent" name="is_kill" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Is your facility able to provide a COA indicating microbiological results including pathogenic results?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control pathogenic_drpdn" id="pathogenic_parent" name="is_pathogenic" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--										Traceability & Recall-->
+											<label class="bg-success" type="text"><?php echo _l('Traceability & Recall') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility have a Recall Team?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control recallt_drpdn" id="recallt_parent" name="is_recallt" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility have a written recall plan?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control wrp_drpdn" id="wrp_parent" name="is_wrp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility conduct mock recalls and traceability exercises?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control mock_drpdn" id="mock_parent" name="is_mock" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_tr_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Finished Product Mock Recall frequency?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control finished_drpdn" id="finished_parent" name="is_finished" >
+														<?php
+														echo mock_recalls_traceability_exercises_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_tr_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Ingredients Mock Recall frequency?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control ingredients_drpdn" id="ingredients_parent" name="is_ingredients" >
+														<?php
+														echo mock_recalls_traceability_exercises_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_tr_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Contact packaging Mock Recall frequency?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control contact_drpdn" id="contact_parent" name="is_contact" >
+														<?php
+														echo mock_recalls_traceability_exercises_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<label class="" type="text" id="facility_trace_level"><?php echo _l('Confirm your facility can trace:') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('The source identity of all the ingredients (one down)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control one_down_drpdn" id="one_down_parent" name="is_one_down" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Into each step of processing?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control each_step_drpdn" id="each_step_parent" name="is_each_step" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Into the finished product?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control finished_product_drpdn" id="finished_product_parent" name="is_finished_product" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('To shipping (one up)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control one_up_drpdn" id="one_up_parent" name="is_one_up" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Fully documented within (select one):') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control select_one_drpdn" id="select_one_parent" name="is_select_one" >
+														<?php
+														echo fully_documented_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility retain samples from every manufacturing Lot?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control retain_drpdn" id="retain_parent" name="is_retain_sfeml" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility require suppliers of (or who use) food contact packaging to provide evidence of its approval to use with food?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control or_who_use_drpdn" id="or_who_use_parent" name="is_sfcp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--											Transportation, Storage, Distribution-->
+											<label class="bg-success" type="text"><?php echo _l('Transportation, Storage, Distribution') ?></label><br>
+											<label class="" type="text" id="do_include_allfollowing_level"><?php echo _l('Do storage and transportation programs include all the following:') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Proper storage?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control proper_storage_drpdn" id="proper_storage_parent" name="is_proper_storage" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Cleaning of packing containers?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control clean_pc_drpdn" id="clean_pc_parent" name="is_clean_pc" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Cleaning and maintenance of equipment?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control clean_me_drpdn" id="clean_me_parent" name="is_clean_me" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Are raw materials segregated from finished product?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control segregated_fp_drpdn" id="segregated_fp_parent" name="is_segregated_fp" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Are perishables stored under proper environmental conditions (cooler, freezer, etc.)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control stored_ec_drpdn" id="stored_ec_parent" name="is_stored_ec" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Transportation has appropriate seals and locks?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control appropriate_sl_drpdn" id="appropriate_sl_parent" name="is_appropriate_sl" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('If your storage and transportation programs do not include all the above listed requirements, please explain:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tlisted_requirements" id="listed_requirements" name="listed_requirements" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Are all raw materials and finished products stored on site?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control stored_site_drpdn" id="stored_site_parent" name="is_stored_site" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_stored_no">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('If not on site, is it under your Company or 3rd-party control?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control stored_3rdparty_drpdn" id="stored_3rdparty_parent" name="is_stored_3rdparty" >
+														<?php
+														echo stored_3rdparty_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_stored_3rdpartycontrol">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('If under 3rd-party control, is the 3rd-party GFSI audited?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control gfsi_3rdparty_drpdn" id="gfsi_3rdparty_parent" name="is_gfsi_3rdparty" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<!--										Financial Risk-->
+											<label class="bg-success" type="text"><?php echo _l('Financial Risk') ?></label><br>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('How many years has your company been in business?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tbeen_in_business" id="been_in_business" name="is_been_in_business" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Does your facility have a D&B (Dun & Bradstreet) number?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control db_drpdn" id="db_parent" name="is_db" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_db_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('Please enter your facility D&B number:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tdb_number" id="db_number" name="db_number" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<label class="" type="text" id="insurance_policy_level"><?php echo _l('Confirm if your facility has the following insurance policy coverages:') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('General Liability?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control general_liability_drpdn" id="general_liability_parent" name="is_general_liability" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Product Liability?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control product_liability_drpdn" id="product_liability_parent" name="is_product_liability" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Professional Liability?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control professional_liability_drpdn" id="professional_liability_parent" name="is_professional_liability" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Commercial Property?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control commercial_property_drpdn" id="commercial_property_parent" name="is_commercial_property" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Business Crime?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control business_crime_drpdn" id="business_crime_parent" name="is_business_crime" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Workers Compensation?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control workers_compensation_drpdn" id="workers_compensation_parent" name="is_workers_compensation" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Employment Practices Liability?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control employment_practices_liability_drpdn" id="employment_practices_liability_parent" name="is_employment_practices_liability" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Additional Liability (Umbrella Coverage)?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control additional_liability_drpdn" id="additional_liability_parent" name="is_additional_liability" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Transportation and Cargo?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control transportation_cargo_drpdn" id="transportation_cargo_parent" name="is_transportation_cargo" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Please add any additional comments here:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tadd_additional_comments_number" id="add_additional_comments_number" name="add_additional_comments_number" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<!--										Historical Risk-->
+											<label class="bg-success" type="text"><?php echo _l('Historical Risk') ?></label><br>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Has your facility been cited for any regulatory non-compliance issues or received any warning letters in the past 3 years? (e.g. FDA483 in the US)') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control past_years_drpdn" id="past_years_parent" name="is_past_years" >
+														<?php
+														echo select_na_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_pastyears_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('If so please provide details:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tprovide_details" id="provide_details" name="provide_details" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Has your facility experienced any government driven recoveries or recalls in the last 3 years?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control past_years_gdr_drpdn" id="past_years_gdr_parent" name="is_past_years_gdr" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_pastyears_gdr_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('How many?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control thow_many" id="how_many" name="is_how_many" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_pastyears_gdr_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted "
+														   type="text"><?php echo _l('select class:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control select_class_drpdn" id="select_class_parent" name="is_select_class" >
+														<?php
+														echo historical_risk_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Has your company been involved with any import alerts in the last 3 years?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control involved_ia_drpdn" id="involved_ia_parent" name="is_involved_ia" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_involved_ia_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('How many?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control thow_many_child_drdn" id="how_many_child_drdn" name="is_how_many_child_drdn" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_involved_ia_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted "
+														   type="text"><?php echo _l('Please provide more information:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control provide_more_information_drpdn" id="provide_more_information" name="provide_more_information" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Has your facility experienced any customer driven recoveries or recalls in the last 3 years?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control past_years_customer_drpdn" id="past_years_customer" name="is_past_years_customer" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_past_years_customer_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('How many?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control thow_many_customer" id="how_many_customer" name="is_how_many_customer" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_past_years_customer_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted "
+														   type="text"><?php echo _l('select class:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control select_customer_drpdn" id="select_customer_parent" name="is_select_customer" >
+														<?php
+														echo historical_risk_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+
+
+											<div class="row d-flex mb-12 ">
+												<div class="col-md-8" >
+													<label class="p-2 "
+														   type="text"><?php echo _l('Has your facility experienced any voluntary recoveries or recalls in the last 3 years?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control past_years_voluntary_drpdn" id="past_years_voluntary" name="is_past_years_voluntary" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12 d-none block_past_years_voluntary_yes">
+												<div class="col-md-8">
+													<label class="p-2 text-muted"
+														   type="text"><?php echo _l('How many?') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control thow_many_voluntary" id="how_many_voluntary" name="is_how_many_voluntary" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+
+											<div class="row d-flex mb-12 d-none block_past_years_voluntary_yes">
+												<div class="col-md-8" >
+													<label class="p-2 text-muted "
+														   type="text"><?php echo _l('select class:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control select_voluntry_drpdn" id="select_voluntry_parent" name="is_select_voluntry" >
+														<?php
+														echo historical_risk_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Has your facility failed a GFSI audit in the last 3 years?') ?><span
+																class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<select class="form-control failed_gfsi_drdn" id="failed_gfsi" name="is_failed_gfsi" >
+														<?php
+														echo select_dropdown();
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-8">
+													<label class="p-2"
+														   type="text"><?php echo _l('Please add any additional comments here:') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control tplease_add_acomments" id="please_add_acomments" name="please_add_acomments" placeholder="<?php echo _l('text_here'); ?>"></textarea>
+												</div>
+											</div>
+<!--									DECLARATION-->
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<label class="bg-primary d-block p-2"
+														   type="text"><?php echo _l('declaration') ?></label>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="allergen_declaration"
+														   type="text"><?php echo _l('allergen_declaration') ?><span class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control " id="allergen_declaration" name="declaration" required></textarea>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="allergen_comments"
+														   type="text"><?php echo _l('allergen_comments') ?></label>
+												</div>
+												<div class="col-md-4">
+													<textarea class="form-control " id="allergen_comments" name="comments"></textarea>
+												</div>
+											</div>
+
+<!--											ELECTRONICALLY SIGN-->
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<label class="bg-primary d-block p-2"
+														   type="text"><?php echo _l('e_sign') ?></label>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="e_signed_by"
+														   type="text"><?php echo _l('name') ?><span class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control " id="e_signed_by" name="e_signed_by" value="" required>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="e_signed_email"
+														   type="text"><?php echo _l('email') ?><span class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control " id="e_signed_email" name="e_signed_email" value="" required>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="e_signed_title"
+														   type="text"><?php echo _l('Title') ?><span class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control " id="e_signed_title" name="e_signed_title" value="" required>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-4">
+													<label class="p-2" for="e_signed_phone"
+														   type="text"><?php echo _l('Phone') ?><span class="required text-danger"> *</span></label>
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control " id="e_signed_phone" name="e_signed_phone" value="" required>
+												</div>
+											</div>
+											<div class="row d-flex mb-12">
+												<div class="col-md-12">
+													<input type="checkbox" id="declaration_statement">
+													<label for="declaration_statement" id="declaration_statement_label"><?php echo _l('declaration_statement') ?><span class="required text-danger"> *</span></label><br>
+												</div>
+											</div>
+
+
+
+											<div class="btn btn-primary mr-2" id="savedata" onclick="saveData();">
+												<?php echo _l('save_changes') ?>
+											</div>
+											<div class="btn btn-primary mr-2 d-none" id="savedatawait"">
+												<?php echo _l('save_wait') ?>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	     </div>
+	</div>
+	<!-- Container-fluid Ends-->
+</div>
+
+<?php init_tail(); ?>
+<script>
+	var token = "<?php echo $this->session->userdata('token'); ?>";
+	var company_id = "<?php echo $this->session->userdata('user_id'); ?>";
+	var staff_id = "<?php echo $this->session->userdata('staffid'); ?>";
+	var admin_url = "<?php echo base_url(); ?>";
+	var api_url = "<?php echo API_URL; ?>";
+	var country_api = "<?php echo COUNTRY_API;?>";
+
+	$(document).on('change', '.fda_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_fda_yes').removeClass('d-none');
+			$('.block_fda_no').addClass('d-none');
+		} else if(res === 'No') {
+			$('.block_fda_no').removeClass('d-none');
+			$('.block_fda_yes').addClass('d-none');
+		}
+		else  {
+			$('.block_fda_no').addClass('d-none');
+			$('.block_fda_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.hfr_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_hfr_yes').removeClass('d-none');
+		}else  {
+			$('.block_hfr_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.is_tpcqi', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_tpcqi_child').removeClass('d-none');
+		}else  {
+			$('.block_tpcqi_child').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fimport_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_fimport_yes').removeClass('d-none');
+		}else  {
+			$('.block_fimport_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fsvp_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_fsvp_child_yes').removeClass('d-none');
+			$('.fsvp_level').removeClass('d-none');
+			$('.block_additional_no').addClass('d-none');
+		} else if(res === 'No') {
+			$('.block_additional_no').removeClass('d-none');
+			$('.block_fsvp_child_yes').addClass('d-none');
+			$('.fsvp_level').addClass('d-none');
+		}
+		else  {
+			$('.block_additional_no').addClass('d-none');
+			$('.block_fsvp_child_yes').addClass('d-none');
+			$('.fsvp_level').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.gfsi_rec_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_child_gfsi_yes').removeClass('d-none');
+		}else  {
+			$('.block_child_gfsi_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.faoms_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_omstandards_yes').removeClass('d-none');
+		}else  {
+			$('.block_omstandards_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.coms_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_coms_yes').removeClass('d-none');
+		}else  {
+			$('.block_coms_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fhla_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_aw_child_yes').removeClass('d-none');
+		}else  {
+			$('.block_aw_child_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.emergency_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_list_emergency_child').removeClass('d-none');
+		}else  {
+			$('.block_list_emergency_child').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fsecure_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_fsecure_child_yes').removeClass('d-none');
+		}else  {
+			$('.block_fsecure_child_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fas_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_fas_yes').removeClass('d-none');
+		}else  {
+			$('.block_fas_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.detection_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_detection_yes').removeClass('d-none');
+		}else  {
+			$('.block_detection_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.dsap_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_dsap_yes').removeClass('d-none');
+		}else  {
+			$('.block_dsap_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.iira_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_sra_yes').removeClass('d-none');
+		}else  {
+			$('.block_sra_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.automatedsystem_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_automatedsystem_yes').removeClass('d-none');
+		}else  {
+			$('.block_automatedsystem_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.onset_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_onset_yes').removeClass('d-none');
+		}else  {
+			$('.block_onset_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.fifo_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'No') {
+			$('.block_fifo_no').removeClass('d-none');
+		}else  {
+			$('.block_fifo_no').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.raw_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_raw_yes').removeClass('d-none');
+		}else  {
+			$('.block_raw_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.hccp_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_hccp_yes ').removeClass('d-none');
+		}else  {
+			$('.block_hccp_yes ').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.mock_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_tr_yes ').removeClass('d-none');
+		}else  {
+			$('.block_tr_yes ').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.stored_site_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'No') {
+			$('.block_stored_no').removeClass('d-none');
+		}else  {
+			$('.block_stored_no').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.stored_3rdparty_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === '3rd-Party Control') {
+			$('.block_stored_3rdpartycontrol ').removeClass('d-none');
+		}else  {
+			$('.block_stored_3rdpartycontrol ').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.db_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_db_yes ').removeClass('d-none');
+		}else  {
+			$('.block_db_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.past_years_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_pastyears_yes ').removeClass('d-none');
+		}else  {
+			$('.block_pastyears_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.past_years_gdr_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_pastyears_gdr_yes ').removeClass('d-none');
+		}else  {
+			$('.block_pastyears_gdr_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.involved_ia_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_involved_ia_yes ').removeClass('d-none');
+		}else  {
+			$('.block_involved_ia_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.past_years_customer_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_past_years_customer_yes ').removeClass('d-none');
+		}else  {
+			$('.block_past_years_customer_yes').addClass('d-none');
+		}
+	})
+	$(document).on('change', '.past_years_voluntary_drpdn', function () {
+		var id = $(this).attr('id');
+		var res = $('#' + id + ' :selected').text();
+		if (res === 'Yes') {
+			$('.block_past_years_voluntary_yes ').removeClass('d-none');
+		}else  {
+			$('.block_past_years_voluntary_yes').addClass('d-none');
+		}
+	})
+
+	$("#effective_date").on('focusout',function()
+	{
+		var effective_date=$("#effective_date").val();
+		var numberOfDaysToAddItem=get_selected_column_value('tblqcdocumenttype','no_of_days','id','1');
+		$("#expiary_date").val(addDays(effective_date, numberOfDaysToAddItem)).prop("readonly", true);
+	})
+
+
+	function saveData(e) {
+		// e.preventDefault();
+		$('#savedata').addClass('d-none');
+		$('#savedatawait').removeClass('d-none');
+	}
+
+
+</script>
+
